@@ -144,7 +144,7 @@ function showMensClothings() {
   document.getElementById("mens-items").innerHTML = myHTML.join("");
 }
 
-//womesFilter function-------------------------------------------------------------------------------------->
+//womensFilter function-------------------------------------------------------------------------------------->
 womensFilter.addEventListener("click", showWomensClothings);
 function showWomensClothings() {
   womensSection.classList.remove("hide-class");

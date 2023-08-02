@@ -1,7 +1,21 @@
 document.querySelector("form").addEventListener("submit", signup);
 
 //storing all user array if there is any otherwise empty array
-let user = JSON.parse(localStorage.getItem("user")) || [];
+// let user = JSON.parse(localStorage.getItem("user")) || [];
+let user = [];
+try {
+    const userData = localStorage.getItem("user");
+    if (userData) {
+        user = JSON.parse(userData);
+        if (!Array.isArray(user)) {
+            // If the data in local storage is not an array, handle the error accordingly
+            throw new Error("Invalid user data in local storage.");
+        }
+    }
+} catch (error) {
+    // Handle any potential parsing errors or invalid data
+    console.error("Error parsing user data:", error);
+}
 
 //function to match email with regex to validate
 function validateEmail(email) {
@@ -52,6 +66,8 @@ function signup(e) {
                 localStorage.setItem("user", JSON.stringify(user));
                 console.log(user);
                 alert("signup successful");
+                window.location.href='../login/index.html'
+
             
             
         }
